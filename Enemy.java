@@ -1,4 +1,4 @@
-public class Enemy {
+public class Enemy extends SpriteBase{
     private String name;
     private String damage;
     private String hp;
