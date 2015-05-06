@@ -68,6 +68,14 @@ public abstract class SpriteBase {
         return ycomp;
     }
 
+    public double getCenterX() {
+        return xcomp + width * .5;
+    }
+
+    public double getCenterY() {
+        return ycomp + height * .5;
+    }
+
     public double getRComp() {
         return rcomp;
     }
@@ -82,6 +90,18 @@ public abstract class SpriteBase {
 
     public double getDr() {
         return dr;
+    }
+
+    public double getHp() {
+        return hp;
+    }
+
+    public void setHp(double hpChange) {
+        this.hp = hpChange;
+    }
+
+    public double getDamage() {
+        return damage;
     }
 
     /**
@@ -108,6 +128,15 @@ public abstract class SpriteBase {
         }
     }
 
+    public void updateUI() {
+        spriteImageView.relocate(x, y);
+        spriteImageView.setRotate(r);
+    }
+
+    public void attack(SpriteBase spriteHp) {
+        spriteHp.setHp(spriteHp.getHealth - this.getDamage());
+    }
+
     /**
     *This method checks if the sprite has no more health left
     *return returns a boolean that checks weather or not the sprite is dead
@@ -119,7 +148,7 @@ public abstract class SpriteBase {
             return false;
         }
     }
-    
+
     public abstract void checkRemovability();
 
 }
