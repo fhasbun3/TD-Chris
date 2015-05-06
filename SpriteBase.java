@@ -46,6 +46,8 @@ public abstract class SpriteBase {
         this.height = spriteImage.getHeight();
 
         this.canMove = true;
+
+        addToLayer();
     }
 
     public Image getSpriteImage() {
@@ -89,6 +91,13 @@ public abstract class SpriteBase {
     */
     public void addToLayer() {
         this.layer.getChildren().add(this.spriteImageView);
+    }
+
+    /*
+    /This method removes the image of a sprite from your pane
+    */
+    public void removeFromLayer() {
+        this.layer.getChildren.remove(this.spriteImageView);
     }
 
     public void move() {
