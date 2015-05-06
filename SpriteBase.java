@@ -22,8 +22,6 @@ public abstract class SpriteBase {
     private double width;
     private double height;
 
-    private boolean canMove;
-
     public SpriteBase(Image spriteImage, Pane layer, double xcomp, double ycomp,
                       double rcomp, double dx, double dy, double dr, double hp,
                       double damage) {
@@ -86,28 +84,42 @@ public abstract class SpriteBase {
         return dr;
     }
 
-    /*
-    /This method adds the image of a sprite to the Pane (layer)
+    /**
+    *This method adds the image of a sprite to the Pane (layer)
     */
     public void addToLayer() {
         this.layer.getChildren().add(this.spriteImageView);
     }
 
-    /*
-    /This method removes the image of a sprite from your pane
+    /**
+    *This method removes the image of a sprite from your pane
     */
     public void removeFromLayer() {
-        this.layer.getChildren.remove(this.spriteImageView);
+        this.layer.getChildren().remove(this.spriteImageView);
     }
 
+    /**
+    *This method moves the sprite image
+    */
     public void move() {
-        if(!canMove) {
-            return;
-        } else {
             x += dx;
             y += dy;
             r += dr;
         }
     }
+
+    /**
+    *This method checks if the sprite has no more health left
+    *return returns a boolean that checks weather or not the sprite is dead
+    */
+    public boolean isDead() {
+        if(hp <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public abstract void checkRemovability();
 
 }
