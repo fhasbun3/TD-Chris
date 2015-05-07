@@ -21,7 +21,14 @@ public class HealthBar extends Pane {
         outerRectangle.setStrokeType(StrokeType.OUTSIDE);
         outerRectangle.setFill(Color.RED);
 
-        innerRectangle = new Rectangle(x, y, innerWidth, )
+        innerRectangle = new Rectangle(x, y, innerWidth, height);
+        innerRectangle.setStrokeType(StrokeType.OUTSIDE);
+        innerRectangle.setFill(Color.LIMEGREEN);
 
+        getChildren().addAll(outerRectangle, innerRectangle);
+    }
+
+    public void setValue(double value) {
+        innerRectangle.setWidth(outerRectangle.getWidth() * value);
     }
 }
